@@ -1,6 +1,11 @@
-import { createStore } from "redux";
-import reducer from "./reducers/number";
+import { configureStore } from "@reduxjs/toolkit";
+import countReducer from "../store/reducers/numberSlice";
 
-const store = createStore(reducer);
+export const store = configureStore({
+  reducer: {
+    count: countReducer,
+  },
+});
 
-export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispacth = typeof store.dispatch;
